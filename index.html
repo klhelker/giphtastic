@@ -2,38 +2,37 @@
 <html>
 <head>
     <title>Giphtastic</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
-
- <button data-search= "Argentina">Argentina</button>
- <button data-search= "France">France</button>
- <div id="gifArea"></div>
-<script type="text/javascript">
-
-    $('button').on('click',function (){
-        var x = $(this).data("search");
-        
-
-        var queryURL= "http://api.giphy.com/v1/gifs/search?q="+x+"&api_key=6BDLXo72I7XzDjnAmW2Gmk5YusJyh70g&limit=10";
-        console.log(queryURL);
- 
-        $.ajax({url: queryURL, method: "GET"}).done(function(response) {
-         console.log(response);
-         console.log(response.data[0].rating);
-         for (var i = 0; i < response.data.length; i++){
-                 $('#gifArea').prepend("<p>Rating: " + response.data[i].rating + "</p>");
-                 $('#gifArea').prepend("<img src= '" + response.data[i].images.downsized.url + "'>");
-         }
-             
-             
-             })
-            
-
-    });
-
-</script>
-
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
+ 
+    <div id="buttons-view">
+ <!-- <button data-search= "Argentina">Argentina</button>
+ <button data-search= "France">France</button> -->
+ </div>
+ 
+    <div id="gifArea"></div>
+
+    <div class="container">
+      <h1>Country Search</h1>
+  
+     
+      <form id="country-form">
+        <label for="country-input">Add a country</label>
+        <input type="text" id="country-input"><br>
+  
+     
+        <input id="find-country" type="submit" value="Country Search">
+      </form>
+    
+    </div>
+    </div>
+   
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="./javascript/app.js"></script>
+</body>
+</html>
+
 
 
