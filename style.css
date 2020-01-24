@@ -6,7 +6,7 @@ button {
 }
 
 .container {
-
+margin-top: 0px;
 float: right;
 
 }
@@ -15,8 +15,12 @@ float: right;
 
   position: relative;
   float: left;
-  width: 274px;
   margin: 20px 0 25px;
   overflow: auto;
+  margin-right: 250px;
   
+}
+
+.img {
+  padding: 5px;
 }

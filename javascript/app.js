@@ -4,10 +4,6 @@ var countries = [ "Argentina", "France", "Australia", "Mozambique", "Thailand", 
 
 function renderButtons() {
 
-    
-    $("#buttons-view").empty();
-
-    // Looping through the array of countries
     for (var i = 0; i < countries.length; i++) {
 
      
@@ -45,6 +41,7 @@ function renderButtons() {
       $.ajax({url: queryURL, method: "GET"}).then(function(response) {
         
         $("#gifArea").html("");
+        
         for(i = 0; i < response.data.length; i++){
           
           var animate = response.data[i].images.fixed_height_small.url;
@@ -65,16 +62,7 @@ function renderButtons() {
         $("#gifArea").prepend(gifImage);
 
 
-      //  for (var i = 0; i < response.data.length; i++){
-      //          $('#gifArea').prepend("<p>Rating: " + response.data[i].rating + "</p>");
-      //          $('#gifArea').prepend("<img src= '" + response.data[i].images.fixed_height_small.url + "'>");
-      //          var newCountry = $("<button>");
-      //          var p = $("<p>").text("<p>Rating: " + response.data[i].rating + "</p>");
-      //          countryImage.attr('src',response.data[i].images.fixed_height_small.url + "'>" );
-      //          newCountryDiv=append(p);
-      //          newCountryDiv=append(countryImage);
-      //         $('#gifArea').append(newCountryDiv);
-
+      
       }
           })
         })
