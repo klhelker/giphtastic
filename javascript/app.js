@@ -33,7 +33,7 @@ function renderButtons() {
     });
     
      $("#buttons-view").on('click', ".country", function() {
-
+        
       var country = $(this).text().toLowerCase();
 
       var queryURL= "http://api.giphy.com/v1/gifs/search?q="+country+"&api_key=6BDLXo72I7XzDjnAmW2Gmk5YusJyh70g&limit=10";
@@ -50,24 +50,34 @@ function renderButtons() {
           console.log(response);
        
           var gifImage = $('<img>').attr({
-          
-               "src": staticGif,
-        "data-still": staticGif,
+                
+                 "src": staticGif,
+          "data-still": staticGif,
         "data-animate": animate,
-        "data-state": "still",
-        "class": "gifImage",
+          "data-state": "still",
+               "class": "gifImage",
 
-       })
-
+            })
+      
         $("#gifArea").prepend(gifImage);
 
-
-      
       }
           })
         })
-     $(document).ready(function(){
-       renderButtons();
+    
+        $("#gifArea").on("click", ".gifImage", function() {
+          
+          var state = $(this).attr("data-state");
+          
+          if (state === "still") {
+            $(this).attr("src", $(this).attr("data-animate"));
+            $(this).attr("data-state", "animate");
+          } else {
+            $(this).attr("src", $(this).attr("data-still"));
+            $(this).attr("data-state", "still");
+          }
+        });
+           $(document).ready(function(){
+             renderButtons();
 
-     })
- 
+             })
